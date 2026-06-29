@@ -1,8 +1,7 @@
 {
   "repoURL": "https://github.com/Kaiying-Yu/dag-example-apps",
-  "drySha": "8088f4c0d970abb09e250248cc97e35623447cb5",
-  "author": "Alexandre Gaudreault <alexandre_gaudreault@intuit.com>",
-  "date": "2026-05-19T08:14:20-07:00",
-  "subject": "feat: add apps for apps in any namespace (#476)",
-  "body": "* fix: invalid image for guestbook\n\nSigned-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>\n\n* rename\n\nSigned-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>\n\n* feat: add apps for apps in any namespace\n\nSigned-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>\n\n---------\n\nSigned-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>\n"
+  "drySha": "b65d2ed6709b993555b70a1113fcfe950dcc6d3f",
+  "author": "Lynn Yu <yu.kaiyi@northeastern.edu>",
+  "date": "2026-06-29T15:48:19-07:00",
+  "subject": "demo: scale guestbook to 2 replicas"
 }
