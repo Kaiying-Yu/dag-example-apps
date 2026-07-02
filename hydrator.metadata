@@ -1,0 +1,7 @@
+{
+  "repoURL": "https://github.com/Kaiying-Yu/dag-example-apps",
+  "drySha": "6562c036005af1ce66e9fd273e4ac8e620b60f92",
+  "author": "Lynn Yu <yu.kaiyi@northeastern.edu>",
+  "date": "2026-07-01T09:52:00-07:00",
+  "subject": "demo: bump guestbook replicas to 4 (repro fan-in jump)"
+}
