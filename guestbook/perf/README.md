@@ -5,5 +5,5 @@ To hydrate the manifests in this repository, run the following commands:
 ```shell
 git clone https://github.com/Kaiying-Yu/dag-example-apps
 # cd into the cloned directory
-git checkout 5f2d1c7a0e7ae5bfd1832e98df9f319b7b3e6f90
+git checkout 4fd1101d254a1827637f434090d71530b8871972
 ```
