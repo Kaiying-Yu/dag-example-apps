@@ -1,7 +1,7 @@
 {
   "repoURL": "https://github.com/Kaiying-Yu/dag-example-apps",
-  "drySha": "7c0560f7f01337eeb4bf8872770bd0c77c56e87e",
+  "drySha": "36277af2bf0ecb3013960a6a19f8d78169610bcd",
   "author": "Lynn Yu <yu.kaiyi@northeastern.edu>",
-  "date": "2026-07-20T09:41:53-07:00",
-  "subject": "demo: bump replica to 2"
+  "date": "2026-07-20T10:06:50-07:00",
+  "subject": "demo: bump replica to 1"
 }
