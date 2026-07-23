@@ -1,0 +1,75 @@
+# DAG demo — promoter-side resources. Apply alongside (not replacing) the PECS
+# demo in gitops-promoter-config.yaml. Reuses the ScmProvider
+# gitops-promoter-lynn-local (the GitHub App 3899358 must be installed on the
+# dag-example-apps repo). Uses its own repo, PromotionStrategy, and branches so
+# it never collides with the PECS demo.
+#
+# Diamond promotion graph:
+#                ┌──→ dag-env/e2e  ──┐
+#   dag-env/dev ─┤                   ├──→ dag-env/prod
+#                └──→ dag-env/perf ──┘
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: GitRepository
+metadata:
+  name: dag-example-apps
+  namespace: promoter-system
+spec:
+  github:
+    name: dag-example-apps
+    owner: Kaiying-Yu
+  scmProviderRef:
+    name: gitops-promoter-lynn-local
+---
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: PromotionStrategy
+metadata:
+  name: demo-dag
+  namespace: promoter-system
+spec:
+  activeCommitStatuses:
+  - key: argocd-health
+  proposedCommitStatuses:
+  - key: promoter-dag
+  environments:
+  - autoMerge: false
+    branch: dag-env/dev
+  - autoMerge: true
+    branch: dag-env/e2e
+  - autoMerge: true
+    branch: dag-env/perf
+  - autoMerge: true
+    branch: dag-env/prod
+  gitRepositoryRef:
+    name: dag-example-apps
+---
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: DAGCommitStatus
+metadata:
+  name: demo-dag
+  namespace: promoter-system
+spec:
+  promotionStrategyRef:
+    name: demo-dag
+  key: promoter-dag
+  environments:
+  - branch: dag-env/dev
+  - branch: dag-env/e2e
+    dependsOn: [dag-env/dev]
+  - branch: dag-env/perf
+    dependsOn: [dag-env/dev]
+  - branch: dag-env/prod
+    dependsOn: [dag-env/e2e, dag-env/perf]
+---
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: ArgoCDCommitStatus
+metadata:
+  name: demo-dag-argocd-health
+  namespace: promoter-system
+spec:
+  key: argocd-health
+  promotionStrategyRef:
+    name: demo-dag
+  applicationSelector:
+    matchExpressions:
+    - key: demo-dag-env
+      operator: Exists
